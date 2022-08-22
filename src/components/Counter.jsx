@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Counter(onChangeState)  {
-  const [count, setCount] = useState();
+  const [count, setCount] = useState(0);
   const [dynamicClass, setDynamicClass] = useState('text');
 
  
@@ -30,9 +30,14 @@ export default function Counter(onChangeState)  {
       }
   },[count])
   useEffect(() => {
+    return(()=>{
+
        setCount(count => count =0)
        setDynamicClass(dynamicClass=>dynamicClass = "text");
        console.log('All clean here. Count:', count, 'Class:', dynamicClass);
+    })
+      
+    
   },[onChangeState])
 
  
